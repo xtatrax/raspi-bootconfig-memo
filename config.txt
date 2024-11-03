@@ -1,0 +1,101 @@
+# For more options and information see
+# http://rptl.io/configtxt
+# Some settings may impact device functionality. See link above for details
+
+# Uncomment some or all of these to enable the optional hardware interfaces
+# オプションのハードウェアインターフェースを有効にするには、これらの一部または全部のコメントを解除します。
+#dtparam=i2c_arm=on
+#dtparam=i2s=on
+#dtparam=spi=on
+
+# Enable audio (loads snd_bcm2835)
+dtparam=audio=on
+
+# Additional overlays and parameters are documented
+# /boot/firmware/overlays/README
+
+# 純正カメラ使う?
+camera_auto_detect=0
+
+# Automatically load overlays for detected DSI displays
+# DSI ポートを有効? DSI ⇒ おそらくフレキで刺すタイプのやつ
+display_auto_detect=0
+
+# Automatically load initramfs files, if found
+# initramfs カーネルとか言うのを自動で探す
+auto_initramfs=1
+
+# Enable DRM VC4 V3D driver
+# HDMI ディスプレイ関係
+dtoverlay=vc4-kms-v3d
+max_framebuffers=2
+
+# Don't have the firmware create an initial video= setting in cmdline.txt.
+# Use the kernel's default instead.
+# HDMI ディスプレイ関係
+disable_fw_kms_setup=1
+
+
+# Disable compensation for displays with overscan
+# オーバースキャンを無効化
+disable_overscan=1
+
+[cm4]
+# Enable host mode on the 2711 built-in XHCI USB controller.
+# This line should be removed if the legacy DWC2 controller is required
+# (e.g. for USB device mode) or if USB support is not required.
+# USB On-To-GO を有効?
+#otg_mode=0
+
+[cm5] 
+#dtoverlay=dwc2,dr_mode=host
+
+[all]
+#全体に適応
+
+# Run as fast as firmware / board allows
+# fwサポート内のmaxクロックまでブースト
+arm_boost=0
+# クロック設定 詳細 → https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking
+arm_freq=1000
+# 64bit モード
+arm_64bit=1
+# Bluetooth を無効化
+dtoverlay=disable-bt
+# wi-fi を無効化
+#dtoverlay=disable-wifi
+
+# LEDのトリガー
+# heartbeat 鼓動
+# none トリガーなし
+# rfkill0 wi-fi
+# rfkill1 Bluetooth
+# 赤色LEDの点灯トリガー設定
+dtparam=pwr_led_trigger=rfkill0
+# 赤色LEDの on off
+dtparam=pwr_led_activelow=on
+  
+[pi1]
+# pi 1 シリーズに゙適応
+[pi2]
+# pi 2 シリーズに゙適応
+[pi3]
+# pi 3 及び 3+ シリーズに゙適応
+[pi3+]
+# pi 3+ シリーズに゙適応
+[pi4]
+# pi 4 400 cm4 及び cm4s シリーズに゙適応
+[pi400]
+# pi 400 に適応
+[pi5]
+# pi 5 シリーズに゙適応
+[cm4]
+# コンピューティングモジュール 4 に適応
+[cm4s]
+# コンピューティングモジュール 4S に適応
+[cm5]
+# コンピューティングモジュール 5 に適応??
+[pi0]
+# Zero シリーズに適応
+# 32bit
+arm_64bit=0
