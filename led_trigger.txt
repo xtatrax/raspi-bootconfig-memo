@@ -1,0 +1,49 @@
+
+dtparam=???_led_trigger=###
+dtparam=???_led_activelow=on or off
+
+??? -> pwr 赤色LED
+??? -> act 緑色LED
+
+カスタムトリガー
+echo timer > /sys/class/leds/led1/trigger
+echo $on_msec > /sys/class/leds/led1/delay_on
+echo $off_msec > /sys/class/leds/led1/delay_off
+
+###
+↓ 
+none                No trigger
+kbd-scrolllock      ScrollLock押下
+kbd-numlock	        NumLock押下
+kbd-capslock	      CapsLock押下
+kbd-kanalock	      KanaLock押下(?)
+kbd-shiftlock	      ShiftLock押下(?)
+kbd-altgrlock	      AltGrave押下(?)
+kbd-ctrllock	      Ctrl押下
+kbd-altlock	        Alt押下
+kbd-shiftllock	    左Shift押下
+kbd-shiftrlock	    右シフト押下
+kbd-ctrlllock	      左Ctrl押下
+kbd-ctrlrlock	      右Ctrl押下
+timer	              1秒起きに点滅
+oneshot	            1回だけ短く点灯
+heartbeat	          心拍のように点滅
+backlight	          常時点灯
+gpio	              GPIOピンの特定ピンを検知して点灯(?)
+cpu	                CPU使用時
+default-on	        常時点灯
+input	              キー入力時に点滅
+panic	              カーネルパニック発生時に点滅
+mmc0	              SDカード書込み時に点灯
+mmc1	              (2番目のSDカード書込み時に点灯)
+rfkill0	            WiFi動作時に点滅
+rfkill1	            Bluetooth動作時に点滅
+cpu0                Flash on cpu0 usage
+cpu1                Flash on cpu1 usage
+cpu2                Flash on cpu2 usage
+cpu3                Flash on cpu3 usage
+[input]             Default state
+
+参照元
+https://raspberrypi.stackexchange.com/questions/69674/are-there-other-act-led-trigger-options-besides-mmc-and-heartbeat
+https://raspi.taneyats.com/entry/lchika-onboard
