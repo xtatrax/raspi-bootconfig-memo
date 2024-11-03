@@ -2,6 +2,13 @@
 # http://rptl.io/configtxt
 # Some settings may impact device functionality. See link above for details
 
+# とりあえず
+# http://rptl.io/configtxt
+# と
+# /boot/firmware/overlays/README
+# bootfs/overlays/README
+# 読むよろし
+
 # Uncomment some or all of these to enable the optional hardware interfaces
 # オプションのハードウェアインターフェースを有効にするには、これらの一部または全部のコメントを解除します。
 #dtparam=i2c_arm=on
